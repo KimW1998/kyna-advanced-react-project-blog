@@ -26,15 +26,12 @@ export default function PostsFeed() {
             <Link to={`/post/${post.id}`}>{post.title}</Link>
             <p className="meta">
               {moment(post.createdAt).format("DD-MM-YYYY")} &bull;{" "}
-              {/* {post.post_likes.length} likes &bull;{" "} */}
               <span className="tags">
-                {post.tags.map((tag) => {
-                  return (
-                    <React.Fragment key={tag.id}>
-                      <span className="Tag">{tag.tag}</span>{" "}
-                    </React.Fragment>
-                  );
-                })}
+                {post.tags.map((tag) => (
+                  <React.Fragment key={tag.id}>
+                    <span className="Tag">{tag.tag}</span>{" "}
+                  </React.Fragment>
+                ))}
               </span>
             </p>
           </div>

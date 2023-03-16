@@ -1,16 +1,21 @@
 import axios from "axios";
-
-const API_URL = `https://coders-network-api.herokuapp.com`;
+import { API_URL_DATA } from "../../config";
+const API_URL = API_URL_DATA;
 
 export function startLoadingPost() {
-  // TODO
+  return {
+    type: "postPage/startLoadingPost",
+  };
 }
 
-export function postFullyFetched(/* TODO */) {
-  // TODO
+export function postFullyFetched(data) {
+  return {
+    type: "postPage/postFullyFetched",
+    payload: data,
+  };
 }
 
-export function fetchPost(id) {
+export function fetchPost({ id }) {
   return async function thunk(dispatch, getState) {
     dispatch(startLoadingPost());
 

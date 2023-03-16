@@ -1,21 +1,25 @@
 const initialState = {
-  status: "loading",
+  loading: true,
+  post: null,
+  comments: [],
 };
 
 export default function postPageSliceReducer(state = initialState, action) {
   switch (action.type) {
-    case "feed/startLoading": {
+    case "postPage/startLoadingPost": {
       return {
-        status: "loading",
+        loading: true,
+        post: null,
+        comments: [],
       };
     }
-    case "feed/postsFetched": {
+    case "postPage/postFullyFetched": {
       return {
-        status: "success",
-        data: action.payload,
+        loading: false,
+        post: action.payload.post,
+        comments: action.payload.comments,
       };
     }
-
     default: {
       return state;
     }
